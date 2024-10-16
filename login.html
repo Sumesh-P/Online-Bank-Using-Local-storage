@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Login Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 400px; /* Set the desired width */
+        }
+        body{
+            background-image:url("./Images/hand-pointing-currency-blockchain-technology-background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center ">
+            <div class="col-md-6 form-container ">
+                <div class="card shadow-lg">
+                    <div class="card-body mb-3">
+                        <div class="text-center mt-4">
+                            <img src="./Images/Screenshot (242).png" alt="Bank Logo" width="200" height="100">
+                        </div>
+                       <!-- l <h3 class="card-title text-center mb-4">Bank Account Registration</h3> -->
+                        <form>
+                            <div class="mb-3">
+                                <label for="accountNumber" class="form-label">Account Number</label>
+                                <input type="text" class="form-control" id="accountnumber"
+                                    placeholder="Enter your account number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary w-50" onclick="home()">Login</button>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 text-primary">
+                           <a href="" style="text-decoration: none">Forget Password?&nbsp;&nbsp;&nbsp;</a><a href=""style="text-decoration: none">&nbsp;&nbsp;&nbsp;Sign up</a>
+                        </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+    function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Call the function and get the name parameter
+        const name = getQueryParam("name");
+        console.log(name);
+     function home(){
+        no=accountnumber.value
+        if(accountnumber.value in localStorage){
+            let accountData = localStorage.getItem(accountnumber.value);
+        // Parse the JSON string back to an object
+        let t = JSON.parse(accountData);
+        console.log(t)
+           if(password.value==t.pass){
+            alert("Login Successful");
+            window.location= `./index.html?no=${encodeURIComponent(no)}`;
+           }
+           else{
+            alert("Incorrect Password")
+           }
+        }
+        else{
+            alert("Account doesn't exist")
+        }
+     }
+</script>
+</html>

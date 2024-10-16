@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .form-container {
+            max-width: 400px; 
+        }
+        body{
+            background-image:url("./Images/hand-pointing-currency-blockchain-technology-background.jpg");
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center ">
+            <div class="col-md-6 form-container ">
+                <div class="card shadow-lg">
+                    <div class="card-body mb-3">
+                        <div class="text-center mt-4">
+                            <img src="./Images/Screenshot (242).png" alt="Bank Logo" width="200" height="100">
+                        </div>
+                       <!-- l <h3 class="card-title text-center mb-4">Bank Account Registration</h3> -->
+                        <form>
+                            <div class="mb-3">
+                                <label for="accountNumber" class="form-label">Account Number</label>
+                                <input type="text" class="form-control" id="accountnumber"
+                                    placeholder="Enter your account number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary w-50" onclick="change()">Register</button>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 text-primary">
+                           <a href="#" onclick="change1()">Sign in</a>
+                        </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function change1(){
+        window.location='./login.html'
+    }
+    function change(){
+        name=username.value;
+        if(accountnumber.value in localStorage){
+            alert("Account already exist")
+        }
+        else if(accountnumber.value=="" ||
+            username.value==""  ||
+            password.value==""){
+                alert("Please enter valid data");
+            }
+        else{
+        let obj={
+            acc:accountnumber.value,
+            user:username.value,
+            pass:password.value
+        }
+        localStorage.setItem(accountnumber.value,JSON.stringify(obj));
+        console.log(obj);
+        alert("Registration Successful")
+        window.location = `./login.html?name=${encodeURIComponent(name)}`;
+          }
+        }
+    </script>
+</html>
